@@ -1,0 +1,107 @@
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--------------------------------------------------------------------------------------------------------------------------------------------
+FOCUS HERE
+...........
+
+manage.py ---->>> management of site. 
+
+Django models--->> inside your application directory
+
+
+
+mysie/settings.py --->>>   
+
+timezone
+
+STATIC_URL
+
+STATIC_ROOT
+
+DATABASES     (To create database for your application, python manage.py migrate)
+
+INSTALLED_APPS 
+
+
+models.py --->>>
+
+
+from django.db import models	
+from utils import timezone
+
+class Post(models.Model):
+	author=models.Foreignkey('auth.user')             # ForeignKey is link to another model
+	title=models.CharField(max_length=200)
+	text=models.textField()
+	created_date=models.DateTimeField(default=timezone.now)
+	published_date=models.DateTimeField(blank=True, null=True)
+
+
+	def Publish(self):
+		self.published_date=timezone.now()        # now() and save() methods are there in models.model
+		self.save()				  # Have been inherited from models. Hence, must be very common methods.
+
+	def __str__(self):
+		return self.title
+
+This way you just have created a new table. But if you want this table to reflect inside your database as database table, you should:
+
+python manage.py makemigrations <application_name>        # Django creates a migration file for us that we now have to apply to the database
+
+python manage.py migrate				  # Your model is ready inside database now!
+
+
+
+To edit, delete and add the post we have just modeled, we need to use Django admin.
+
+So, blog/admin.py --->>>
+
+from django.contrib import admin
+from .models import Post
+
+admin.site.register(Post)				  # To make our model visible to the admin page we need to register it here
+
+
+To login to the admin page, you need a superuser
+
+superuser --->>>
+
+python manage.py createsuperuser
+
+
+"WSGI" protocol --->>> Django works on this standard protocol for serving websites using Python, which PythonAnywhere supports.
+
+WSGI configuration file tells PythonAnywhere, where our webapp lives and where Django settings file's name is.
+
+StaticFileHandler --->> For dealing with our CSS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

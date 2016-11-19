@@ -23,21 +23,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v7ik(9vyy8l41*rvuotd*(*1+v@#$9q2jj1)mppr_ce$!8f#)+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True            # This should be True, unless it is in production :)  (Above warning is strict and by Django itself)
 
-ALLOWED_HOSTS = ['prashantjamkhande.pythonanywhere.com']
+ALLOWED_HOSTS = ['prashantjamkhande.pythonanywhere.com']   # When you deploy your application on some hosting service, specify so here :)
 
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [                  # Whenever you add an app, add an entry here too :)
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',                         # You just have to add your app names here
+    'blog',                         # You just have to add your app names here :)
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -50,7 +50,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
@@ -75,7 +74,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
+DATABASES = {                                                                   # So, we use default sqlite3 here :)
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -86,7 +85,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS = [                                        
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
@@ -107,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Berlin'
+TIME_ZONE = 'Europe/Berlin'                 # you keep timezone of your choice globally here :)
 
 
 USE_I18N = True
